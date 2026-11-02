@@ -41,8 +41,13 @@
   // display order for a question's options; true/false keeps its natural order
   function order(q) {
     var idx = q.options.map(function (_, k) { return k; });
-    return q.options.length === 2 && q.options[0] === "True" ? idx : shuffle(idx);
+    if (q.options.length === 2 && q.options[0] === "True") return idx;
+    // options that point at other options ("All of the above") keep their written order
+    if (q.options.some(function (o) { return /\b(of the above|both [a-e]|[a-e] and [a-e])\b/i.test(o); })) return idx;
+    return shuffle(idx);
   }
+  // "A) " style label for multiple choice, nothing for true/false
+  function letter(q, pos) { return q.options.length === 2 && q.options[0] === "True" ? "" : "ABCDE".charAt(pos) + ") "; }
   function conceptState(key) { var r = S.concepts[key]; if (!r) return "no"; return r.passed ? "ok" : "mid"; }
   function chapterPct(ex, ch) {
     var cs = ch.concepts || []; if (!cs.length) return null;
@@ -169,7 +174,7 @@
         '<div class="card"><div class="progress"><span>' + esc(opts.title) + "</span><span>" + (i + 1) + " of " + items.length + "</span></div>" +
         (opts.showSource && label ? '<div class="tiny" style="margin-top:6px">' + esc(label) + "</div>" : "") +
         '<p class="q">' + q.q + "</p>" +
-        order(q).map(function (k) { return '<button class="opt" data-k="' + k + '">' + q.options[k] + '<div class="why" hidden></div></button>'; }).join("") +
+        order(q).map(function (k, pos) { return '<button class="opt" data-k="' + k + '">' + letter(q, pos) + q.options[k] + '<div class="why" hidden></div></button>'; }).join("") +
         '<div id="after"></div></div>';
       answered = false;
       [].forEach.call(app.querySelectorAll(".opt"), function (b) { b.onclick = function () { pick(+b.getAttribute("data-k")); }; });
@@ -258,7 +263,7 @@
       var it = qs[cur], q = it.q;
       app.innerHTML = '<div class="card"><div class="progress"><span>' + esc(m.title) + " · question " + (cur + 1) + " of " + qs.length + '</span><span id="clock"></span></div>' +
         '<p class="q">' + q.q + "</p>" +
-        orders[cur].map(function (k) { return '<button class="opt' + (ans[cur] === k ? " picked" : "") + '" data-k="' + k + '">' + q.options[k] + "</button>"; }).join("") +
+        orders[cur].map(function (k, pos) { return '<button class="opt' + (ans[cur] === k ? " picked" : "") + '" data-k="' + k + '">' + letter(q, pos) + q.options[k] + "</button>"; }).join("") +
         '<div class="actions"><button id="pv">Back</button><button id="fl">' + (flags[cur] ? "Unflag" : "Flag") + '</button><button id="nx" class="primary">' + (cur + 1 < qs.length ? "Next" : "Review and submit") + "</button></div>" +
         '<div class="grid">' + qs.map(function (_, j) { return '<button data-j="' + j + '" class="' + (ans[j] !== undefined ? "ans " : "") + (flags[j] ? "flag " : "") + (j === cur ? "cur" : "") + '">' + (j + 1) + "</button>"; }).join("") + "</div>" +
         '<div class="actions"><button id="sub">Submit exam</button></div><div id="err" class="err"></div></div>';
