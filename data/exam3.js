@@ -1,6 +1,5 @@
 // Exam content. Each concept: id, title, slides, takeaway, rule (HTML), example, textbook (optional, content beyond the slides), checks.
 // Each check: q, options, answer (index), why (one reason per option).
-var TF = ["True", "False"];
 
 var CH29 = {
   id: "ch29", num: 29, title: "Employment and Labor Law",
@@ -256,15 +255,14 @@ window.EXAMS = [
     when: "Mon Nov 9, 5:00 PM · BEH 103 · 50-60 multiple choice and true/false · 60 minutes · Honorlock, closed book",
     date: "2026-11-09T17:00:00-05:00",
     chapters: [
+      CH7,
+      CH27,
       CH29,
       CH30,
-      { id: "ch7", num: 7, title: "Crime", coming: "Adding Mon" },
-      { id: "ch27", num: 27, title: "Accountants' Liability", coming: "Adding Mon" },
-      { id: "ch36", num: 36, title: "Bankruptcy", coming: "Adding Tue" },
-      { id: "ch40", num: 40, title: "Environmental Law", coming: "Adding Tue" }
+      CH36,
+      CH40
     ],
-    mocks: [],
-    mocksComing: "Mock A (standard) and Mock B (harder), 55 questions each, will be added Wednesday once all six chapters are in.",
+    mocks: [MOCK3A, MOCK3B],
     emphasis: [
       { label: "Workers' compensation", ch: "ch29", c: "c4" },
       { label: "Minimum wage policies", ch: "ch29", c: "c5" },
@@ -286,31 +284,31 @@ window.EXAMS = [
       { label: "At-will employment", ch: "ch29", c: "c1" },
       { label: "Contract employment", ch: "ch29", c: "c1" },
       { label: "\"Right to work\"", ch: "ch29", c: "c11" },
-      { label: "Accountants' liability to third parties", ch: "ch27", c: null },
-      { label: "The Sarbanes-Oxley Act", ch: "ch27", c: null },
-      { label: "The Federal Sentencing Guidelines", ch: "ch7", c: null },
-      { label: "\"Business Email Compromise\"", ch: "ch7", c: null },
-      { label: "The 4th Amendment search warrant requirement", ch: "ch7", c: null },
-      { label: "Exceptions to the search warrant requirement", ch: "ch7", c: null },
-      { label: "Grand jury", ch: "ch7", c: null },
-      { label: "Petit jury", ch: "ch7", c: null },
-      { label: "Burdens of proof", ch: "ch7", c: null },
+      { label: "Accountants' liability to third parties", ch: "ch27", c: "c4" },
+      { label: "The Sarbanes-Oxley Act", ch: "ch27", c: "c1" },
+      { label: "The Federal Sentencing Guidelines", ch: "ch7", c: "c1" },
+      { label: "\"Business Email Compromise\"", ch: "ch7", c: "c8" },
+      { label: "The 4th Amendment search warrant requirement", ch: "ch7", c: "c5" },
+      { label: "Exceptions to the search warrant requirement", ch: "ch7", c: "c5" },
+      { label: "Grand jury", ch: "ch7", c: "c3" },
+      { label: "Petit jury", ch: "ch7", c: "c3" },
+      { label: "Burdens of proof", ch: "ch7", c: "c4" },
       { label: "Occupational Safety and Health Act (OSHA)", ch: "ch29", c: "c4" },
-      { label: "Bankruptcy code chapters: purpose and procedures", ch: "ch36", c: null },
-      { label: "Debts not discharged in bankruptcy", ch: "ch36", c: null },
-      { label: "Generally accepted accounting principles (GAAP)", ch: "ch27", c: null },
-      { label: "The Clean Air Act", ch: "ch40", c: null },
-      { label: "Consequences of violating an environmental law", ch: "ch40", c: null },
-      { label: "The Oil Pollution Act", ch: "ch40", c: null },
-      { label: "The Clean Water Act", ch: "ch40", c: null }
+      { label: "Bankruptcy code chapters: purpose and procedures", ch: "ch36", c: "c1" },
+      { label: "Debts not discharged in bankruptcy", ch: "ch36", c: "c5" },
+      { label: "Generally accepted accounting principles (GAAP)", ch: "ch27", c: "c2" },
+      { label: "The Clean Air Act", ch: "ch40", c: "c2" },
+      { label: "Consequences of violating an environmental law", ch: "ch40", c: "c1" },
+      { label: "The Oil Pollution Act", ch: "ch40", c: "c3" },
+      { label: "The Clean Water Act", ch: "ch40", c: "c3" }
     ],
     plan: [
-      { date: "2026-11-01", label: "Sun 11/1", text: "Ch. 29 concepts 1-5 (at will through minimum wage)" },
-      { date: "2026-11-02", label: "Mon 11/2", text: "Ch. 29 concepts 6-11 (benefits through union security)" },
-      { date: "2026-11-03", label: "Tue 11/3", text: "Ch. 30, all six concepts, plus review queue" },
-      { date: "2026-11-04", label: "Wed 11/4", text: "Ch. 7 Crime, plus review queue" },
-      { date: "2026-11-05", label: "Thu 11/5", text: "Ch. 27 Accountants' Liability and Ch. 36 Bankruptcy" },
-      { date: "2026-11-06", label: "Fri 11/6", text: "Ch. 40 Environmental Law, then Mock A" },
+      { date: "2026-11-01", label: "Sun 11/1", text: "Any chapter you like. Ch. 29 has the most emphasis items if you want a place to start" },
+      { date: "2026-11-02", label: "Mon 11/2", text: "Two or three chapters, then clear the review queue" },
+      { date: "2026-11-03", label: "Tue 11/3", text: "Two or three more chapters, plus the review queue" },
+      { date: "2026-11-04", label: "Wed 11/4", text: "Finish any chapters left, then a mixed practice set" },
+      { date: "2026-11-05", label: "Thu 11/5", text: "Mock A, then review every miss" },
+      { date: "2026-11-06", label: "Fri 11/6", text: "Redo concepts that Mock A exposed; emphasis list sweep" },
       { date: "2026-11-07", label: "Sat 11/7", text: "Light day: review queue only, and skim the textbook for the Ch. 29 and 36 CYUs" },
       { date: "2026-11-08", label: "Sun 11/8", text: "Mock B, then review queue. Finish the Ch. 7 hypotheticals and case analysis" },
       { date: "2026-11-09", label: "Mon 11/9", text: "Submit Ch. 7, 29 and 36 items by 3:30pm. Review queue, emphasis list sweep, exam at 5pm" }

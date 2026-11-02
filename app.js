@@ -120,10 +120,13 @@
       '<div class="stats"><div class="stat"><b>' + (days > 0 ? days + (days === 1 ? " day" : " days") : "Today") + "</b><span>until the exam</span></div>" +
       '<a class="stat" href="#/' + ex.id + '/emphasis" style="color:inherit"><b>' + emphDone + " / " + emph.length + "</b><span>emphasis items passed</span></a>" +
       '<a class="stat" href="#/review/' + ex.id + '" style="color:inherit"><b>' + dueN + "</b><span>review cards due</span></a></div>" +
-      (plan ? '<div class="plan"><b>Today\'s plan</b> · ' + esc(plan.text) + "</div>" : "") +
-      '<div class="card"><h2 style="margin-top:0">Chapters</h2><div class="list">' + chRows + "</div></div>" +
-      '<div class="card"><h2 style="margin-top:0">Mock exams</h2><div class="list">' + mockRows + "</div></div>" +
-      '<div class="card"><h2 style="margin-top:0">Study plan</h2><div class="list">' + (ex.plan || []).map(function (p) {
+      (plan ? '<div class="plan"><b>Suggested for today</b> · ' + esc(plan.text) + "</div>" : "") +
+      '<div class="card"><h2 style="margin-top:0">Chapters</h2><p class="tiny" style="margin:0 0 4px">Start anywhere. Every chapter, concept and quick check is open.</p><div class="list">' + chRows + "</div></div>" +
+      '<div class="card"><h2 style="margin-top:0">Practice</h2><div class="list">' +
+        '<a class="item" href="#/' + ex.id + '/practice"><span class="grow">Mixed practice<br><span class="tiny">Pick any chapters and get a random set of questions</span></span><span class="badge b-no">Open</span></a>' +
+        '<a class="item" href="#/' + ex.id + '/emphasis"><span class="grow">Professor\'s emphasis list<br><span class="tiny">Every item links to the concept that covers it</span></span><span class="badge b-no">' + emphDone + "/" + emph.length + "</span></a>" +
+        mockRows + "</div></div>" +
+      '<div class="card"><h2 style="margin-top:0">Suggested plan (optional)</h2><div class="list">' + (ex.plan || []).map(function (p) {
         var isToday = p.date === todayISO();
         return '<div class="item"><span class="small" style="width:92px;flex:none' + (isToday ? ";color:var(--accent);font-weight:600" : "") + '">' + esc(p.label) + '</span><span class="grow small">' + esc(p.text) + "</span></div>";
       }).join("") + "</div></div>";
@@ -303,6 +306,35 @@
     document.getElementById("st").onclick = function () { end = Date.now() + m.minutes * 60000; timer = setInterval(tick, 1000); window.__mockTimer = timer; draw(); };
   }
 
+  function viewPractice(ex) {
+    var built = ex.chapters.filter(function (ch) { return (ch.concepts || []).length; });
+    app.innerHTML = '<div class="crumbs"><a href="#/' + ex.id + '">' + esc(ex.short) + "</a> / Mixed practice</div><h1>Mixed practice</h1>" +
+      '<p class="muted small">Random quick-check questions from whichever chapters you pick, with instant feedback. Misses go to your review queue.</p>' +
+      '<div class="card"><div class="list" id="chs">' + built.map(function (ch) {
+        var n = ch.concepts.reduce(function (a, c) { return a + c.checks.length; }, 0);
+        return '<label class="item"><input type="checkbox" value="' + ch.id + '" checked><span class="grow">Ch. ' + ch.num + " " + esc(ch.title) + '</span><span class="tiny">' + n + " questions</span></label>";
+      }).join("") + '</div><div class="actions"><button class="primary" data-n="10">10 questions</button><button data-n="20">20 questions</button><button data-n="40">40 questions</button></div><div id="err" class="err"></div></div>';
+    document.getElementById("chs").onchange = function () { document.getElementById("err").textContent = ""; };
+    [].forEach.call(app.querySelectorAll("button[data-n]"), function (b) {
+      b.onclick = function () {
+        var picked = [].map.call(app.querySelectorAll("#chs input:checked"), function (i) { return i.value; });
+        if (!picked.length) { document.getElementById("err").textContent = "Pick at least one chapter."; return; }
+        var pool = Object.keys(Q).filter(function (id) { return Q[id].exam.id === ex.id && Q[id].c && picked.indexOf(Q[id].ch.id) >= 0; });
+        var ids = shuffle(pool).slice(0, +b.getAttribute("data-n"));
+        runQuiz(ids.map(function (id) { return { id: id, q: Q[id].q }; }), {
+          title: "Mixed practice", showSource: true, back: '<a href="#/' + ex.id + '/practice">Mixed practice</a>',
+          onDone: function (score, total, log) {
+            log.forEach(function (l) { if (l.ok) hit(l.id); else miss(l.id); }); save();
+            var byCh = {};
+            log.forEach(function (l) { var c = Q[l.id].ch; byCh[c.id] = byCh[c.id] || [0, 0, c]; byCh[c.id][1]++; if (l.ok) byCh[c.id][0]++; });
+            app.innerHTML = '<div class="card"><div class="result">' + score + " / " + total + '</div><div class="list">' + Object.keys(byCh).map(function (k) { var r = byCh[k]; return '<div class="item"><span class="grow">Ch. ' + r[2].num + " " + esc(r[2].title) + '</span><span class="pct" style="width:60px">' + r[0] + "/" + r[1] + "</span></div>"; }).join("") +
+              '</div><div class="actions"><a class="btn primary" href="#/' + ex.id + '/practice">Another set</a><a class="btn" href="#/' + ex.id + '">Home</a></div></div>';
+          }
+        });
+      };
+    });
+  }
+
   // ---------- study together ----------
   function myCode() {
     var p = {};
@@ -363,6 +395,7 @@
     if (!ex.chapters.length) { app.innerHTML = '<div class="card"><h1>' + esc(ex.title) + '</h1><p class="muted">' + esc(ex.comingNote || "Coming soon.") + "</p></div>"; return; }
     if (!parts[1]) return viewHome(ex);
     if (parts[1] === "emphasis") return viewEmphasis(ex);
+    if (parts[1] === "practice") return viewPractice(ex);
     if (parts[1] === "mock") { var m = (ex.mocks || []).filter(function (x) { return x.id === parts[2]; })[0]; return m ? viewMock(ex, m) : viewHome(ex); }
     var ch = findCh(ex, parts[1]);
     if (!ch.concepts || !ch.concepts.length) return viewHome(ex);

@@ -44,7 +44,8 @@ main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
 .plan { border: 1px solid var(--accent); border-radius: var(--radius); padding: 10px 12px; font-size: 14px; margin-bottom: 14px; }
 .plan b { color: var(--accent); font-weight: 600; }
 .row { display: flex; align-items: center; gap: 10px; }
-.list a.item, .list div.item { display: flex; align-items: center; gap: 10px; padding: 10px 2px; border-bottom: 1px solid var(--line); color: var(--ink); }
+.list label.item { cursor: pointer; }
+.list a.item, .list div.item, .list label.item { display: flex; align-items: center; gap: 10px; padding: 10px 2px; border-bottom: 1px solid var(--line); color: var(--ink); }
 .list .item:last-child { border-bottom: 0; }
 .list .grow { flex: 1; min-width: 0; }
 .bar { height: 6px; width: 90px; background: var(--soft); border-radius: 3px; overflow: hidden; flex: none; }
