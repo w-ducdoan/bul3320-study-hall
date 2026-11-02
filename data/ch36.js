@@ -12,8 +12,8 @@ var CH36 = {
         { q: "Which chapter is liquidation, where assets are sold and a business terminates?", options: ["Chapter 7", "Chapter 11", "Chapter 13", "Chapter 5"], answer: 0, why: ["Correct.", "Reorganization.", "Consumer reorganization.", "Administrative."] },
         { q: "Which chapter is available only to individuals (consumers)?", options: ["Chapter 13", "Chapter 7", "Chapter 11", "Chapter 9"], answer: 0, why: ["Correct.", "Individuals and businesses.", "Mainly businesses, sometimes individuals.", "Not covered for BUL 3320 (it's for municipalities)."] },
         { q: "True or false: state courts can hear bankruptcy cases.", options: TF, answer: 1, why: ["Federal courts have exclusive jurisdiction.", "Correct. Slide 2."] },
-        { q: "Who manages a specific bankruptcy case, appointed by the U.S. Trustee?", options: ["The bankruptcy trustee", "The U.S. bankruptcy judge", "The creditors' committee", "The debtor's attorney"], answer: 0, why: ["Correct. Slide 5.", "The judge decides; the trustee manages.", "That's a Chapter 11 body.", "Not an official."] },
-        { q: "Which is NOT one of the Bankruptcy Code's three goals?", options: ["Punishing debtors who borrowed too much", "Giving the debtor a fresh start", "Orderly repayment of creditors", "Preserving companies when rehabilitation maximizes value"], answer: 0, why: ["Correct. Punishment isn't a goal.", "Goal 1.", "Goal 2.", "Goal 3."] },
+        { q: "A bankruptcy trustee is appointed by the U.S. bankruptcy judge to manage a specific case.", options: TF, answer: 1, explain: "False. The bankruptcy trustee is appointed by the U.S. Trustee for that region." },
+        { q: "The goals of the Bankruptcy Code include:", options: ["Giving the debtor a fresh start", "Letting the debtor repay creditors in an orderly manner", "Preserving troubled companies when rehabilitation maximizes value", "All of the above"], answer: 3, explain: "Slide 3." },
         { q: "A company wants to keep operating while restructuring its debts. Which chapter fits?", options: ["Chapter 11", "Chapter 7", "Chapter 13", "Chapter 3"], answer: 0, why: ["Correct.", "Chapter 7 ends the business.", "Individuals only.", "Administrative."] }
       ]
     },
@@ -27,7 +27,7 @@ var CH36 = {
         { q: "Creditors want to force a debtor into bankruptcy. Under which chapters can they file an involuntary petition?", options: ["Chapter 7 or 11 only", "Chapter 13 only", "Any chapter", "Chapter 11 only"], answer: 0, why: ["Correct. Slides 6 and 26.", "Chapter 13 is voluntary only.", "Not Chapter 13.", "Chapter 7 is also allowed."] },
         { q: "True or false: at the 341 meeting of creditors, the debtor answers the trustee's questions under penalty of perjury.", options: TF, answer: 0, why: ["Correct. Slide 11.", "Slide 11 says under penalty of perjury."] },
         { q: "After receiving formal notice of a bankruptcy, a bank keeps calling the debtor daily and threatens to sue. The bank faces:", options: ["Sanctions for a willful stay violation: actual damages, emotional distress damages, and fees", "Nothing, since phone calls aren't collection activity", "Only a warning", "Criminal prosecution under RICO"], answer: 0, why: ["Correct. Slide 8.", "Calls and letters are collection activity.", "Willful violations bring damages.", "Not RICO."] },
-        { q: "The period between a creditor's involuntary filing and the order for relief is the:", options: ["Gap period", "Cooling-off period", "Preference period", "Automatic stay"], answer: 0, why: ["Correct.", "That's labor law (strike notice).", "Not the slide term.", "The stay is the injunction itself."] }
+        { q: "The period between a creditor's involuntary filing and the order for relief is called the preference period.", options: TF, answer: 1, explain: "False. It's the gap period." }
       ]
     },
     {
@@ -39,8 +39,8 @@ var CH36 = {
         { q: "In what order does the trustee pay claims?", options: ["Secured, then priority, then unsecured", "Priority, then secured, then unsecured", "Unsecured, then secured, then priority", "All creditors pro rata at once"], answer: 0, why: ["Correct. Slide 14.", "Secured comes first.", "Reversed.", "Only unsecured claims share pro rata."] },
         { q: "True or false: a corporation in Chapter 7 can keep exempt property like household goods.", options: TF, answer: 1, why: ["Exemptions are for individual debtors, not organizations.", "Correct. Slide 12."] },
         { q: "Unsecured creditors are owed $500K in total and $50K remains after higher-ranked claims. A creditor owed $20K receives:", options: ["$2,000", "$20,000", "$10,000", "Nothing"], answer: 0, why: ["Correct. 10% pro rata.", "There isn't enough to pay in full.", "Wrong ratio.", "They share what's left."] },
-        { q: "A secured creditor generally files a proof of claim only when:", options: ["Its claim exceeds the value of its collateral", "It always must", "The debtor is in Chapter 13", "It's an insider"], answer: 0, why: ["Correct. Slide 13.", "Not always.", "Not the slide rule.", "Unrelated."] },
-        { q: "Which is typically exempt property for an individual debtor?", options: ["Reasonably necessary clothing", "A vacation home", "Stock in a brokerage account", "A second car of any value"], answer: 0, why: ["Correct. Slide 12.", "Not necessary.", "Not on the list.", "Vehicles only up to a certain value."] }
+        { q: "Secured creditors file a proof of claim only if their claim exceeds the value of their collateral.", options: TF, answer: 0, explain: "True. Slide 13." },
+        { q: "Exempt property an individual debtor may typically keep includes:", options: ["Reasonably necessary clothing", "Household goods and furnishings", "Pensions", "All of the above"], answer: 3, explain: "Slide 12. Cars and jewelry are exempt only up to a certain value." }
       ]
     },
     {
@@ -67,8 +67,8 @@ var CH36 = {
         { q: "A debtor forgets to list one creditor on her schedules. That debt is:", options: ["Not discharged, as an omitted debt", "Automatically discharged", "Paid first as a priority claim", "Converted to a secured debt"], answer: 0, why: ["Correct.", "Omitted debts survive.", "Not the rule.", "Not the rule."] },
         { q: "Under the Brunner test, to discharge student loans the debtor must show:", options: ["Can't keep a minimal standard of living, it's likely to persist, and good-faith efforts to repay", "Income below the median", "That the school closed", "Any financial hardship at all"], answer: 0, why: ["Correct. All three prongs.", "Not the test.", "Not the slide test.", "Undue hardship is a high bar."] },
         { q: "True or false: student loans can never be discharged in bankruptcy.", options: TF, answer: 1, why: ["It's a myth. They can be discharged with undue hardship (Brunner).", "Correct. Slides 21 and 29."] },
-        { q: "How long must a debtor wait to file for bankruptcy again (per the slide)?", options: ["8 years", "2 years", "5 years", "10 years"], answer: 0, why: ["Correct. Slide 22.", "Not the slide number.", "That's the max Chapter 13 plan length.", "That's how long Chapter 7 stays on a credit report."] },
-        { q: "A debtor promises to keep paying his car loan after discharge so he can keep the car. That's called:", options: ["Reaffirmation", "Revocation", "Cramdown", "A preference"], answer: 0, why: ["Correct.", "Revocation is the court undoing a discharge.", "Cramdown is Chapter 11 plan approval.", "A preference is a pre-filing payment."] }
+        { q: "A debtor must wait 8 years after a discharge to file for bankruptcy again.", options: TF, answer: 0, explain: "True. Slide 22." },
+        { q: "Promising to pay a debt even after it has been discharged is called revocation.", options: TF, answer: 1, explain: "False. That's reaffirmation. Revocation is a court undoing a discharge for fraud or concealment." }
       ]
     },
     {
@@ -78,10 +78,10 @@ var CH36 = {
       example: "Hypo 9 (slide 27): Jack is $12,000 behind on his mortgage after medical unemployment, is back at work earning $75,000, and files Chapter 13 the night before the foreclosure sale. The stay stops the sale, and he pays $400 a month for 36 months on the arrears while keeping up his regular mortgage payments. He keeps the house.",
       checks: [
         { q: "In Chapter 11, who usually runs the business and proposes the reorganization plan?", options: ["The debtor in possession", "A Chapter 7 trustee", "The creditors' committee", "The bankruptcy judge"], answer: 0, why: ["Correct. Slide 23.", "That's for liquidation.", "It protects creditors but doesn't run the business.", "The judge decides; the judge doesn't run the business."] },
-        { q: "A court confirms a Chapter 11 plan even though some creditors voted against it. This is a:", options: ["Cramdown", "Reaffirmation", "Clawback", "Lockout"], answer: 0, why: ["Correct. Slide 24.", "That's continuing to pay after discharge.", "That's a trustee undoing transfers.", "Labor law."] },
+        { q: "A cramdown is when a court confirms a Chapter 11 plan over the objection of some creditors.", options: TF, answer: 0, explain: "True. Slide 24." },
         { q: "True or false: in Chapter 13, creditors vote to approve the repayment plan.", options: TF, answer: 1, why: ["The court approves; creditors don't vote.", "Correct. Slide 26."] },
         { q: "A Chapter 13 debtor stops making plan payments halfway through. What happens to his debts?", options: ["They're revived", "They stay discharged", "They convert to Chapter 11 automatically", "Only secured debts revive"], answer: 0, why: ["Correct. Slide 28.", "Chapter 13 discharge isn't permanent like Chapter 7's.", "No automatic conversion on the slide.", "All debts revive."] },
-        { q: "Who usually sits on the Chapter 11 creditors' committee?", options: ["The seven largest unsecured creditors", "All secured creditors", "The debtor's officers", "The U.S. Trustee"], answer: 0, why: ["Correct. Slide 23.", "Unsecured, not secured.", "They're the debtor side.", "The U.S. Trustee appoints the committee."] },
+        { q: "The Chapter 11 creditors' committee is usually made up of the seven largest secured creditors.", options: TF, answer: 1, explain: "False. The seven largest unsecured creditors." },
         { q: "A homeowner wants to stop a foreclosure and catch up on missed payments over time. Which chapter fits best?", options: ["Chapter 13", "Chapter 7", "Chapter 5", "Chapter 9"], answer: 0, why: ["Correct. Hypo 9.", "Chapter 7 can't stop a foreclosure, only delay it.", "Administrative.", "Municipalities."] }
       ]
     }

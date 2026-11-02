@@ -12,8 +12,8 @@ var CH40 = {
         { q: "A factory's smoke lowers the value of nearby homes, and the factory pays nothing for it. This is a:", options: ["Negative externality", "Positive externality", "Cap and trade", "Cramdown"], answer: 0, why: ["Correct. Slide 3.", "A third party bears a cost, not a benefit.", "That's a regulatory tool.", "Bankruptcy term."] },
         { q: "Can the EPA criminally prosecute a corporate officer who didn't personally pollute?", options: ["Yes, if the officer failed to prevent employees' criminal negligence", "No, only the individuals who polluted", "No, environmental law is civil only", "Only if the officer owns stock"], answer: 0, why: ["Correct. Slide 5.", "Officer liability reaches beyond the people who acted.", "There are criminal penalties.", "Not the test."] },
         { q: "True or false: violating an environmental law can lead to both civil penalties and imprisonment.", options: TF, answer: 0, why: ["Correct. Slide 5.", "Slide 5 lists both civil and criminal penalties."] },
-        { q: "When was the EPA created?", options: ["1970", "1962", "1990", "1935"], answer: 0, why: ["Correct.", "Silent Spring was 1962.", "The Oil Pollution Act was 1990.", "The Wagner Act was 1935."] },
-        { q: "Which is NOT a consequence of violating environmental law on the slides?", options: ["Automatic loss of the company's corporate charter", "Civil fines", "Imprisonment", "Reputational damage"], answer: 0, why: ["Correct. Not on the slides.", "Listed.", "Listed.", "Listed (slide 36)."] }
+        { q: "Congress created the EPA in 1990.", options: TF, answer: 1, explain: "False. 1970. The Oil Pollution Act is from 1990." },
+        { q: "Under environmental law, only the employees who actually polluted can be criminally prosecuted, not corporate officers.", options: TF, answer: 1, explain: "False. The EPA can prosecute corporate officers who fail to prevent their employees' criminal negligence." }
       ]
     },
     {
@@ -23,10 +23,10 @@ var CH40 = {
       example: "Citizen suit hypo (slide 34): a factory discharges into a river and the EPA does nothing. Neighbors and environmental groups can sue under the statute's citizen-suit provision. For water, that's the Clean Water Act; the slide's citizen-suit language is in the Clean Air Act.",
       checks: [
         { q: "Which is one of the three ways the Clean Air Act regulates air pollution?", options: ["Allowing citizens to sue polluters and the EPA", "Banning all coal plants", "Requiring every state to adopt California's car standards", "Making all violations strict liability crimes"], answer: 0, why: ["Correct. Slide 7.", "Not in the Act.", "States generally can't set their own car standards.", "Not on the slide."] },
-        { q: "Under cap and trade, a power plant that emits less than its allowance can:", options: ["Sell or save the leftover allowance", "Nothing, because unused allowances expire", "Get a tax refund", "Pollute more next year without limit"], answer: 0, why: ["Correct. Slide 8.", "They can be sold or banked.", "Not the mechanism.", "The cap still applies."] },
+        { q: "Under cap and trade, unused emission allowances expire and cannot be sold.", options: TF, answer: 1, explain: "False. Unused allowances can be sold or saved." },
         { q: "True or false: states may set air pollution standards that are stricter than federal rules.", options: TF, answer: 0, why: ["Correct. Slide 10.", "Slide 10 allows stricter state standards."] },
         { q: "Which state may set its own vehicle emission standards?", options: ["California", "Florida", "Texas", "Every state"], answer: 0, why: ["Correct. Slide 11.", "Not allowed.", "Not allowed.", "Generally not allowed."] },
-        { q: "What penalties apply to countries that miss their Paris Accord goals?", options: ["None; each country sets its own goals", "Trade sanctions", "Fines paid to the UN", "Loss of voting rights"], answer: 0, why: ["Correct. Slide 9.", "No penalties.", "No penalties.", "No penalties."] },
+        { q: "Countries that miss their Paris Accord goals face trade sanctions.", options: TF, answer: 1, explain: "False. There are no penalties. Each country sets its own goals." },
         { q: "Under the Clean Air Act, who must develop State Implementation Plans?", options: ["The states", "The EPA", "Polluting companies", "Congress"], answer: 0, why: ["Correct.", "The EPA sets the standards; states implement them.", "No.", "No."] }
       ]
     },
@@ -38,7 +38,7 @@ var CH40 = {
       checks: [
         { q: "A tanker spills oil into a bay. Under the Oil Pollution Act, the company may have to pay:", options: ["Cleanup costs, natural resource damages, and restitution for economic losses", "Only a fixed $10,000 fine", "Only cleanup costs", "Nothing if the spill was accidental"], answer: 0, why: ["Correct. Slide 15.", "Not a fixed fine.", "Three categories, not one.", "Liability applies to discharges, accidental or not."] },
         { q: "What were the Clean Water Act's goals?", options: ["Swimmable and fishable navigable waters by 1983; no pollutant discharges by 1985", "Clean drinking water standards by 1974", "Ban ocean dumping", "Regulate oil tanker design"], answer: 0, why: ["Correct. Slide 14.", "That's the Safe Drinking Water Act.", "That's the Ocean Dumping Act.", "That's the OPA."] },
-        { q: "Runoff from city streets is an example of:", options: ["Nonpoint source pollution", "Point source pollution", "Thermal pollution", "Ocean dumping"], answer: 0, why: ["Correct. No single source.", "Point source is a single producer.", "Thermal is heat.", "Not dumping."] },
+        { q: "Runoff from city streets is an example of point source pollution.", options: TF, answer: 1, explain: "False. It's nonpoint source pollution. A point source is a discharge from a single producer." },
         { q: "True or false: the Oil Pollution Act was passed after the Exxon Valdez spill.", options: TF, answer: 0, why: ["Correct. Slide 15.", "The OPA (1990) responded to the Exxon Valdez."] },
         { q: "Dumping waste into the ocean without an EPA permit violates the:", options: ["Ocean Dumping Act", "Clean Air Act", "Safe Drinking Water Act", "Endangered Species Act"], answer: 0, why: ["Correct.", "Air.", "Drinking water standards.", "Wildlife."] }
       ]
@@ -50,10 +50,10 @@ var CH40 = {
       example: "A company buys land in 2020 where a previous owner buried drums of solvent in 1985. Under CERCLA, the new owner is strictly liable for cleanup as the current owner, even though it never dumped anything.",
       checks: [
         { q: "A company buys land without knowing a prior owner buried hazardous waste there decades ago. Under CERCLA, the new owner:", options: ["Is liable as the current owner", "Isn't liable because it didn't dump anything", "Is liable only if it was negligent", "Is liable only under RCRA"], answer: 0, why: ["Correct. Strict liability and toxic succession.", "Current owners are potentially responsible parties.", "It's strict liability; fault doesn't matter.", "CERCLA is the cleanup statute."] },
-        { q: "Which statute focuses on tracking hazardous waste from creation to final disposal?", options: ["RCRA", "CERCLA", "NEPA", "TSCA"], answer: 0, why: ["Correct.", "CERCLA cleans up existing sites.", "NEPA covers federal project reviews.", "TSCA covers chemicals."] },
+        { q: "CERCLA requires hazardous waste to be tracked from creation to final disposal.", options: TF, answer: 1, explain: "False. That's RCRA. CERCLA cleans up existing sites." },
         { q: "True or false: under Superfund, polluters are jointly and severally liable unless they show they caused only a portion of the damage.", options: TF, answer: 0, why: ["Correct. Slide 19.", "Slide 19 says joint and several."] },
         { q: "Which is NOT a potentially responsible party under CERCLA?", options: ["A neighbor whose well was contaminated", "The generator of the waste", "The transporter", "The current owner of the site"], answer: 0, why: ["Correct. The neighbor is a victim, not a PRP.", "PRP.", "PRP.", "PRP."] },
-        { q: "Another name for CERCLA is:", options: ["Superfund", "RCRA", "Cap and trade", "The Wagner Act"], answer: 0, why: ["Correct.", "A different statute.", "Air pollution tool.", "Labor law."] }
+        { q: "CERCLA is also known as Superfund.", options: TF, answer: 0, explain: "True. Slide 18." }
       ]
     },
     {
@@ -68,7 +68,7 @@ var CH40 = {
         { q: "True or false: under FIFRA, pesticides must be registered before they can be sold.", options: TF, answer: 0, why: ["Correct. Slide 23.", "Registration is required first."] },
         { q: "Match the medium to the statute: hazardous waste management.", options: ["RCRA", "ESA", "NEPA", "Clean Water Act"], answer: 0, why: ["Correct. Slide 35.", "Wildlife.", "Federal projects.", "Waterways."] },
         { q: "The principle that no community should bear a disproportionate share of environmental harms is called:", options: ["Environmental justice", "Toxic succession", "Cap and trade", "An externality"], answer: 0, why: ["Correct. Slide 29.", "CERCLA owner liability.", "Air emissions trading.", "The economic concept, not the principle."] },
-        { q: "Which agency names endangered species under the ESA?", options: ["Fish and Wildlife Service", "The EPA", "OSHA", "The NRC"], answer: 0, why: ["Correct. Slide 24.", "Not the slide answer.", "Workers.", "Radioactive materials."] }
+        { q: "The EPA names endangered species under the Endangered Species Act.", options: TF, answer: 1, explain: "False. The Department of the Interior's Fish and Wildlife Service does." }
       ]
     }
   ]
