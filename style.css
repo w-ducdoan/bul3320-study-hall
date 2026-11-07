@@ -96,3 +96,13 @@ textarea { min-height: 70px; font-size: 13px; }
   .stats .stat:last-child { grid-column: span 2; }
   .bar { width: 60px; }
 }
+.teach { border-radius: var(--radius); padding: 10px 12px; margin-top: 12px; font-size: 15px; }
+.teach p { margin: 0 0 8px; }
+.teach.good { background: var(--ok-bg); }
+.teach.bad { background: var(--bad-bg); }
+.teach .verdict { font-size: 15px; }
+.teach.good .verdict b { color: var(--ok); }
+.teach.bad .verdict b { color: var(--bad); }
+details { margin-top: 16px; }
+summary { cursor: pointer; font-size: 15px; margin-bottom: 12px; color: var(--accent); }
+.takeaway { line-height: 1.55; }
